@@ -1,10 +1,30 @@
 <script>
-	export let name;
+	export let appName;
+	export let user;
+	export function toggle() {
+		user.loggedIn = !user.loggedIn;
+	}
 </script>
 
+<svelte:head>
+	<title>E-commerce App Demo</title>
+</svelte:head>
+
 <main>
-	<h1>Hello {name}!</h1>
-	<p>This is a demo SVELTE app that consumes an e-commerce API.</p>
+	<h1>{appName}</h1>
+	<p>This app consumes Sylius REST API to show products data.</p>
+
+	{#if user.loggedIn}
+		<button on:click={toggle}>
+			Log out
+		</button>
+	{/if}
+
+	{#if !user.loggedIn}
+		<button on:click={toggle}>
+			Log in
+		</button>
+	{/if}
 </main>
 
 <style>
