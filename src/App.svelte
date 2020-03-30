@@ -1,8 +1,12 @@
 <script>
+	import Product, { handleClick } from './components/product/Product.svelte';
+	import { fade } from 'svelte/transition';
+
 	export let appName;
-	export let user;
+	export let authenticated;
 	export function toggle() {
-		user.loggedIn = !user.loggedIn;
+		authenticated = !authenticated;
+		handleClick();
 	}
 </script>
 
@@ -11,23 +15,35 @@
 </svelte:head>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-<a class="navbar-brand" href="/">E-commerce App Demo</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-	<ul class="navbar-nav mr-auto">
-		<li class="nav-item">
-			<a class="nav-link" href="/">Products</a>
-		</li>
-	</ul>
-</div>
+	<a class="navbar-brand" href="/">E-commerce App Demo</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+		</ul>
+		<ul class="navbar-nav md-auto">
+			<li class="nav-item">
+			{#if authenticated }
+				<a class="nav-link" href="#" on:click={toggle}>Log out</a>
+			{:else}
+				<a class="nav-link" href="#" on:click={toggle}>Connect</a>
+			{/if}
+			</li>
+		</ul>
+	</div>
 </nav>
 
 <main role="main" class="container">
 	<div class="content">
 		<h1>{appName}</h1>
-		<p>This app consumes Sylius REST API to show products data.</p>
+		{#if authenticated }
+			<div transition:fade>
+				<Product></Product>
+			</div>
+		{:else}
+			 <p>This app consumes Sylius REST API to show products data.</p>
+		{/if}
 	</div>
 </main>
 

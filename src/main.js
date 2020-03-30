@@ -4,7 +4,7 @@ const app = new App({
 	target: document.body,
 	props: {
 		appName: 'E-commerce App Demo',
-		user: { loggedIn: false }
+		authenticated: false
 	}
 });
 
