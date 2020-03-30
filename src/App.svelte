@@ -10,41 +10,41 @@
 	<title>E-commerce App Demo</title>
 </svelte:head>
 
-<main>
-	<h1>{appName}</h1>
-	<p>This app consumes Sylius REST API to show products data.</p>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<a class="navbar-brand" href="/">E-commerce App Demo</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item">
+			<a class="nav-link" href="/">Products</a>
+		</li>
+	</ul>
+</div>
+</nav>
 
-	{#if user.loggedIn}
-		<button on:click={toggle}>
-			Log out
-		</button>
-	{/if}
-
-	{#if !user.loggedIn}
-		<button on:click={toggle}>
-			Log in
-		</button>
-	{/if}
+<main role="main" class="container">
+	<div class="content">
+		<h1>{appName}</h1>
+		<p>This app consumes Sylius REST API to show products data.</p>
+	</div>
 </main>
 
 <style>
-	main {
+	.content {
+		padding-top: 100px;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
 	}
 
-	h1 {
+	.content h1 {
 		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: 100;
+		padding-bottom: 1em;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.content p {
+		font-size: 1.5em;
 	}
 </style>
