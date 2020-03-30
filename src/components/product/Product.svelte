@@ -1,7 +1,7 @@
 <script context="module">
     let promise;
 	async function getProducts() {
-		const res = await fetch('https://sylius.mysite.app/api/v1/products/?page=1&limit=6', { 
+		const res = await fetch('https://sylius.mysite.app/api/v1/products/?page=2&limit=6', { 
             method: 'get',
             headers: new Headers({
                 'Authorization': 'Bearer YmZkYmIzY2Y5OWE3NjMyNjEwMWMyZTYyNDVhMjJmNzVlZDE3MTcwZmNhNmZkZWI4NWQ5ZjY4MjdhMDZhZDI5NQ'

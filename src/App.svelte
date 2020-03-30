@@ -14,7 +14,7 @@
 	<title>E-commerce App Demo</title>
 </svelte:head>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #40b3ff;">
 	<a class="navbar-brand" href="/">E-commerce App Demo</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -25,9 +25,9 @@
 		<ul class="navbar-nav md-auto">
 			<li class="nav-item">
 			{#if authenticated }
-				<a class="nav-link" href="#" on:click={toggle}>Log out</a>
+				<a class="nav-link" style="color: white" href="#" on:click={toggle}>Disconnect</a>
 			{:else}
-				<a class="nav-link" href="#" on:click={toggle}>Connect</a>
+				<a class="nav-link" style="color: white" href="#" on:click={toggle}>Connect</a>
 			{/if}
 			</li>
 		</ul>
